@@ -13,9 +13,18 @@
         <RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'">true</RestoreLockedMode>
     </PropertyGroup>
     <PropertyGroup>
+        <PackageProjectUrl>https://github.com/antidote-org/Glutinum.Feliz.ReactGridLayout</PackageProjectUrl>
+        <Packagelicense>https://github.com/antidote-org/Glutinum.Feliz.ReactGridLayout/blob/master/LICENSE.md</Packagelicense>
+        <RepositoryUrl>https://github.com/antidote-org/Glutinum.Feliz.ReactGridLayout</RepositoryUrl>
+        <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <Authors>Maxime Mangel</Authors>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="$(MSBuildThisFileDirectory)/LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>
+        <None Include="$(MSBuildThisFileDirectory)\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
     <!-- Packages common to all the projects
             Excepts Glutinum.Build which is isolated from the others -->
     <ItemGroup Condition="'$(PackageId)'!='EasyBuild'">
