@@ -346,6 +346,6 @@ type ReleaseCommand() =
 
             Command.Run("git", "push")
 
-            PublishCommand().Execute(context, PublishSettings()) |> ignore
+            PublishCommand().Execute(context, PublishSettings(SkipBuild = true)) |> ignore
 
             0

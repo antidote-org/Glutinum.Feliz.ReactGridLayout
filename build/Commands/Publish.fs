@@ -9,13 +9,17 @@ open BlackFox.CommandLine
 type PublishSettings() =
     inherit CommandSettings()
 
+    [<CommandOption("--skip-build")>]
+    member val SkipBuild = false with get, set
+
 type PublishCommand() =
     inherit Command<PublishSettings>()
     interface ICommandLimiter<PublishSettings>
 
     override __.Execute(context, settings) =
 
-        DemoCommand().Execute(context, DemoSettings()) |> ignore
+        if not settings.SkipBuild then
+            DemoCommand().Execute(context, DemoSettings()) |> ignore
 
         Command.Run(
             "npx",
