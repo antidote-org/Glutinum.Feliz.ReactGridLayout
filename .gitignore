@@ -9,3 +9,5 @@ bin/
 *.fs.js
 *.fs.js.map
 *.fable-temp.csproj
+
+demo/dist/
