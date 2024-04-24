@@ -10,6 +10,8 @@ open System
 open System.IO
 open BlackFox.CommandLine
 open EasyBuild.Utils.Dotnet
+open EasyBuild.Commands.Demo
+open EasyBuild.Commands.Publish
 
 type Type =
     | Feat
@@ -173,6 +175,8 @@ type ReleaseCommand() =
             0
         else
 
+            DemoCommand().Execute(context, DemoSettings()) |> ignore
+
             let lastChangelogVersion = Changelog.tryGetLastVersion Workspace.``CHANGELOG.md``
 
             // Should user bump version take priority over commits infered version bump?
@@ -325,21 +329,23 @@ type ReleaseCommand() =
             if not m.Success then
                 failwith $"Failed to find nupkg path in output:\n{standardOutput}"
 
-            // Nuget.push (
-            //     m.Groups.["nupkgPath"].Value,
-            //     Environment.GetEnvironmentVariable("NUGET_KEY")
-            // )
+            Nuget.push (
+                m.Groups.["nupkgPath"].Value,
+                Environment.GetEnvironmentVariable("NUGET_KEY")
+            )
 
-            // Command.Run("git", "add .")
+            Command.Run("git", "add .")
 
-            // Command.Run(
-            //     "git",
-            //     CmdLine.empty
-            //     |> CmdLine.appendRaw "commit"
-            //     |> CmdLine.appendPrefix "-m" $"chore: release {newVersion.ToString()}"
-            //     |> CmdLine.toString
-            // )
+            Command.Run(
+                "git",
+                CmdLine.empty
+                |> CmdLine.appendRaw "commit"
+                |> CmdLine.appendPrefix "-m" $"chore: release {newVersion.ToString()}"
+                |> CmdLine.toString
+            )
 
-            // Command.Run("git", "push")
+            Command.Run("git", "push")
+
+            PublishCommand().Execute(context, PublishSettings()) |> ignore
 
             0
