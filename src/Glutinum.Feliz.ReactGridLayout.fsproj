@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NpmDependencies>
+      <NpmPackage Name="react-grid-layout" Version="&gt;= 1.4.4" ResolutionStrategy="Max" />
+    </NpmDependencies>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Interop.fs" />
+    <Compile Include="Glutinum.Feliz.ReactGridLayout.fs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Fable.Browser.Dom" />
+    <PackageReference Include="Fable.Core" />
+    <PackageReference Include="Feliz" />
+  </ItemGroup>
+</Project>

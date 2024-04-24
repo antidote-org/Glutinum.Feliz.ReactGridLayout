@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <DefineConstants>FABLE_COMPILER</DefineConstants>
+    </PropertyGroup>
+    <ItemGroup>
+        <Compile Include="Router.fs" />
+        <Compile Include="Components/Components.fs" />
+        <Compile Include="Components/ExamplePage.fs" />
+        <Compile Include="Pages/Pages.fs" />
+        <Compile Include="Pages/Basics.fs" />
+        <Compile Include="Pages/NoDragging.fs" />
+        <Compile Include="Pages/Messy.fs" />
+        <Compile Include="Pages/GridProperty.fs" />
+        <!-- <Compile Include="Pages/StaticElement.fs" /> -->
+        <!-- <Compile Include="Pages/DynamicAddRemove.fs" /> -->
+        <!-- <Compile Include="Pages/LocalStorage.fs" /> -->
+        <!-- <Compile Include="Pages/LocalStorageResponsive.fs" /> -->
+        <!-- <Compile Include="Pages/MinMaxWh.fs" /> -->
+        <!-- <Compile Include="Pages/DynamicMinMaxWh.fs" /> -->
+        <!-- <Compile Include="Pages/NoVerticalCompact.fs" /> -->
+        <!-- <Compile Include="Pages/PreventCollision.fs" /> -->
+        <!-- <Compile Include="Pages/ErrorCase.fs" /> -->
+        <!-- <Compile Include="Pages/Toolbox.fs" /> -->
+        <!-- <Compile Include="Pages/DragFromOutside.fs" /> -->
+        <!-- <Compile Include="Pages/Bounded.fs" /> -->
+        <!-- <Compile Include="Pages/ResponsiveBootstrapStyle.fs" /> -->
+        <!-- <Compile Include="Pages/Scale.fs" /> -->
+        <!-- <Compile Include="Pages/AllowOverlap.fs" /> -->
+        <!-- <Compile Include="Pages/ResizeHandler.fs" /> -->
+        <!-- <Compile Include="Pages/Horizontal.fs" /> -->
+        <Compile Include="Pages/Index.fs" />
+        <Compile Include="App.fs" />
+        <Compile Include="Main.fs" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\src\Glutinum.Feliz.ReactGridLayout.fsproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Fable.Core" />
+        <PackageReference Include="Feliz" />
+        <PackageReference Include="Feliz.Bulma" />
+        <PackageReference Include="Feliz.Router" />
+    </ItemGroup>
+</Project>

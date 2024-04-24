@@ -1,0 +1,11 @@
+.ionide/
+node_modules/
+
+obj/
+bin/
+
+.DS_Store
+
+*.fs.js
+*.fs.js.map
+*.fable-temp.csproj
