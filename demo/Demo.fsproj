@@ -34,13 +34,15 @@
         <Compile Include="App.fs" />
         <Compile Include="Main.fs" />
     </ItemGroup>
-    <ItemGroup>
+    <!-- <ItemGroup>
         <ProjectReference Include="..\src\Glutinum.Feliz.ReactGridLayout.fsproj" />
-    </ItemGroup>
+    </ItemGroup> -->
     <ItemGroup>
         <PackageReference Include="Fable.Core" />
         <PackageReference Include="Feliz" />
         <PackageReference Include="Feliz.Bulma" />
         <PackageReference Include="Feliz.Router" />
+        <PackageReference Include="Glutinum.Feliz.ReactGridLayout" />
+        <PackageReference Include="Glutinum.Feliz.Victory" />
     </ItemGroup>
 </Project>

@@ -8,41 +8,107 @@ open Glutinum.Feliz.ReactGridLayout.ReactGridLayout
 open Feliz
 open Feliz.Bulma
 open System
+open Glutinum.Feliz.Victory
+open Fable.Core.JsInterop
 
-let private generateLayout (count : int) =
+open type Glutinum.Feliz.Victory.Exports
+
+type private Data =
+    {
+        x: int
+        y: int
+        y0: int
+    }
+
+let private data =
     [
-        for index in 0..count - 1 do
-            let y = Math.Ceiling(Random().NextDouble() * 4.0) + 1.0
+        {
+            x = 1
+            y = 2
+            y0 = 0
+        }
+        {
+            x = 2
+            y = 3
+            y0 = 1
+        }
+        {
+            x = 3
+            y = 5
+            y0 = 1
+        }
+        {
+            x = 4
+            y = 4
+            y0 = 2
+        }
+        {
+            x = 5
+            y = 6
+            y0 = 2
+        }
+    ]
 
-            Layout(
-                i = string index,
-                x = (index * 2) % 12,
-                y = int (Math.Floor(float index / 6.0) * y),
-                w = 2,
-                h = int y
-            )
+let private layouts =
+    [
+        Layout(i = "bar-chart", x = 0, y = 0, w = 6, h = 6)
+        Layout(i = "area-chart", x = 6, y = 0, w = 6, h = 6)
+        Layout(i = "amount", x = 0, y = 6, w = 4, h = 5, minW = 4, minH = 5)
     ]
     |> ResizeArray
 
-let private generateDOM (count : int) =
+let private content =
     [
-        for index in 0..count - 1 do
-            Html.div [
-                prop.key (string index)
-                prop.children [
-                    Bulma.text.div [
-                        text.hasTextCentered
-                        helpers.isFlex
-                        helpers.isJustifyContentCenter
-                        helpers.isAlignItemsCenter
-                        prop.style [
-                            style.height (length.percent 100.0)
+        Html.div [
+            prop.key "bar-chart"
+            prop.children [
+                VictoryChart [
+                    victoryChart.custom "domainPadding" {| x = 20 |}
+                    victoryChart.children [
+                        VictoryBar [
+                            VictoryBar.data data
+                            VictoryBar.barRatio 0.6
                         ]
-                        text.hasTextWeightBold
-                        prop.text (string index)
                     ]
                 ]
             ]
+        ]
+        Html.div [
+            prop.key "area-chart"
+            prop.children [
+                VictoryChart [
+                    victoryChart.children [
+                        VictoryArea [
+                            VictoryArea.data data
+                            VictoryArea.labels (fun o ->
+                                let data = unbox<Data> o?datum
+                                string data.y
+                            )
+                        ]
+                    ]
+                ]
+            ]
+        ]
+        Html.div [
+            prop.key "amount"
+            prop.style [
+                style.display.flex
+                style.justifyContent.center
+                style.alignItems.center
+            ]
+            prop.children [
+                Bulma.card [
+                    Bulma.cardContent [
+                        Bulma.title.h2 [
+                            prop.text "Amount"
+                        ]
+                        Bulma.title.h1 [
+                            prop.text "1000"
+                        ]
+                    ]
+                ]
+            ]
+        ]
     ]
 
 type Pages with
@@ -55,10 +121,11 @@ type Pages with
             "Basics",
 
             WidthProvider.ReactGridLayout [
-                ReactGridLayoutProps.layout (generateLayout count)
-                ReactGridLayoutProps.children (generateDOM count)
+                ReactGridLayoutProps.layout layouts
+                ReactGridLayoutProps.children content
                 ReactGridLayoutProps.className "layout"
                 ReactGridLayoutProps.rowHeight 30
                 ReactGridLayoutProps.cols 12
+                ReactGridLayoutProps.maxRows 20
             ]
         )

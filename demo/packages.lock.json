@@ -46,6 +46,27 @@
         "resolved": "8.0.101",
         "contentHash": "sOLz3O4BOxnTKfd5OChdRmDUy4Id0GfoEClRG4nzIod8LY1LJZcNyygKAV0A78XOLh8yvhA5hsDYKZXGCR9blw=="
       },
+      "Glutinum.Feliz.ReactGridLayout": {
+        "type": "Direct",
+        "requested": "[0.1.1, )",
+        "resolved": "0.1.1",
+        "contentHash": "HTsqfyF/r9ktgh+Y7zJkIwQ+kRkAheCWO9lM35v0hpdN/5vrYHb+gXTSygUyLLPFeo+2B2CESPIRoV3edb/4dQ==",
+        "dependencies": {
+          "Fable.Browser.Dom": "2.16.0",
+          "Fable.Core": "4.3.0",
+          "Feliz": "2.7.0"
+        }
+      },
+      "Glutinum.Feliz.Victory": {
+        "type": "Direct",
+        "requested": "[0.1.0, )",
+        "resolved": "0.1.0",
+        "contentHash": "ofraBkeyEAbD/0Kapc/HDmqnbZVJsAZYCXNFWeWQwJs3ESqOQJokbplAs8PBMJUhWqeujnTC3Rc9BSKFU8/1Bw==",
+        "dependencies": {
+          "Fable.Core": "4.3.0",
+          "Feliz": "2.7.0"
+        }
+      },
       "NETStandard.Library": {
         "type": "Direct",
         "requested": "[2.0.3, )",
@@ -139,14 +160,6 @@
         "type": "Transitive",
         "resolved": "1.1.0",
         "contentHash": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A=="
-      },
-      "glutinum.feliz.reactgridlayout": {
-        "type": "Project",
-        "dependencies": {
-          "Fable.Browser.Dom": "[2.16.0, )",
-          "Fable.Core": "[4.3.0, )",
-          "Feliz": "[2.7.0, )"
-        }
       },
       "Fable.Browser.Dom": {
         "type": "CentralTransitive",

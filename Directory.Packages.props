@@ -9,5 +9,7 @@
     <PackageVersion Include="Feliz.Bulma" Version="3.0.0" />
     <PackageVersion Include="Feliz.Router" Version="4.0.0" />
     <PackageVersion Include="FSharp.Core" Version="8.0.101" />
+    <PackageVersion Include="Glutinum.Feliz.ReactGridLayout" Version="0.1.1" />
+    <PackageVersion Include="Glutinum.Feliz.Victory" Version="0.1.0" />
   </ItemGroup>
 </Project>
